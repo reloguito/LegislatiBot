@@ -10,9 +10,8 @@ from sqlalchemy.orm import Session
 # --- Imports actualizados de LangChain ---
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import OllamaEmbeddings
-from langchain_community.chat_models import ChatOllama
+from langchain_chroma import Chroma
+from langchain_ollama import ChatOllama, OllamaEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
@@ -37,7 +36,7 @@ def get_llm():
             _ollama_llm = ChatOllama(
                 base_url=settings.OLLAMA_BASE_URL,
                 model=settings.OLLAMA_MODEL,
-                temperature=0.3  # Menor temperatura para respuestas más factuales
+                temperature=0.3  # Menor temperatura para respuestas más factuale
             )
         except Exception as e:
             print(f"Error conectando a Ollama: {e}")

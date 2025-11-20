@@ -25,7 +25,7 @@ class UserInDB(UserBase):
     role: UserRole
     has_completed_onboarding: bool
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserLogin(BaseModel):
     username: EmailStr # El email se usará como username
@@ -48,7 +48,7 @@ class OnboardingProfile(OnboardingProfileBase):
     id: int
     user_id: int
     class Config:
-        orm_mode = True
+                from_attributes = True
 
 # --- Chat ---
 class MessageBase(BaseModel):
@@ -60,14 +60,14 @@ class Message(MessageBase):
     id: int
     timestamp: datetime.datetime
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ChatHistory(BaseModel):
     id: int
     created_at: datetime.datetime
     messages: List[Message]
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ChatRequest(BaseModel):
     query: str
