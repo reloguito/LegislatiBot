@@ -18,10 +18,8 @@ const Login = () => {
     setError(null);
     try {
       const user = await login(form.email, form.password);
-      console.log("Logged in user 1111:", user);
       
-      const returned = user; // Asumiendo que user es el objeto directo
-      // const returned = user.data?.user ?? user; // Descomentar si la estructura cambia
+      const returned = user; 
       
       const completed = returned?.has_completed_onboarding;
       console.log("Parsed user:", returned, "has_completed_onboarding:", completed);
@@ -36,31 +34,24 @@ const Login = () => {
   };
 
   return (
-    // CONTENEDOR PRINCIPAL: Fondo con gradiente y estilo "Tech"
+    // CONTENEDOR PRINCIPAL
     <div className="w-full min-h-[calc(100vh-4rem)] flex items-center justify-center">
     
-      {/* TARJETA DE LOGIN: Efecto Glassmorphism */}
+      {/* TARJETA DE LOGIN */}
       <div className="relative z-10 w-full max-w-md p-8 mx-4 bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.6)]">
         
-        {/* LOGO LEGISBOT */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white tracking-tight flex items-center justify-center gap-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-            Legis<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-[0_0_5px_rgba(192,38,211,0.8)]">Bot</span>
-            {/* Icono de Mazo SVG Inline */}
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradient-icon)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform -rotate-12">
-              <defs>
-                <linearGradient id="gradient-icon" x1="0" y1="0" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#22d3ee" />
-                  <stop offset="100%" stopColor="#a855f7" />
-                </linearGradient>
-              </defs>
-              <path d="m13 14 8-8" />
-              <path d="M16 16 9 9" />
-              <path d="M18.54 13.09a2.76 2.76 0 0 0 0-3.9 2.76 2.76 0 0 0-3.9 0l-7.7 7.7a2.76 2.76 0 0 0 0 3.9 2.76 2.76 0 0 0 3.9 0l7.7-7.7Z" />
-              <path d="M14 18h7" />
-            </svg>
-          </h1>
-          <p className="text-slate-400 text-sm mt-2">Acceso al Sistema Legislativo Inteligente</p>
+        {/* LOGO LEGISBOT MODIFICADO */}
+        {/* CAMBIO AQUÍ: Añadimos 'flex', 'flex-col', 'items-center' y 'justify-center' para centrar la imagen vertical y horizontalmente */}
+        <div className="mb-8 flex flex-col items-center justify-center text-center">
+          
+            <img 
+                src="/Legis_icon.png" 
+                alt="Logo LegisBot" 
+                // CAMBIO AQUÍ: He aumentado un poco el tamaño (h-16 md:h-20) para que se vea mejor como icono principal
+                className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 drop-shadow-[0_0_15px_rgba(168,85,247,0.6)] mb-4"
+            />
+            
+          <p className="text-slate-400 text-sm">Acceso al Sistema Legislativo Inteligente</p>
         </div>
 
         {/* FORMULARIO */}

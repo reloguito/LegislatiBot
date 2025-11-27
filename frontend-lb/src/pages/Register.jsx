@@ -20,16 +20,12 @@ const Register = () => {
     setIsLoading(true);
 
     try {
-      // Registrar (ahora incluye login automático internamente)
       const user = await register(form);
       console.log("Usuario registrado y logueado:", user);
       setSuccess(true);
 
-      // Verificar onboarding y redirigir
       const completed = user?.has_completed_onboarding;
-      console.log("Onboarding completado:", completed);
-
-      // Redirigir después de un breve delay
+      
       setTimeout(() => {
         if (completed) {
           navigate("/");
@@ -50,7 +46,7 @@ const Register = () => {
   };
 
   return (
-    // CONTENEDOR PRINCIPAL: Glassmorphism y centrado
+    // CONTENEDOR PRINCIPAL
     <div className="w-full min-h-[calc(100vh-8rem)] flex items-center justify-center">
       <div className="w-full max-w-md bg-slate-900/60 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl relative">
         
@@ -58,15 +54,22 @@ const Register = () => {
         <div className="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none"></div>
 
-        {/* ENCABEZADO */}
-        <div className="mb-8 text-center">
-          <h2 className="text-3xl font-bold text-white flex items-center justify-center gap-2">
-            <span className="text-cyan-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
-            </span>
+        {/* ENCABEZADO MODIFICADO */}
+        <div className="mb-8 flex flex-col items-center justify-center text-center">
+          
+          {/* 1. ICONO DE LEGISBOT (Arriba) */}
+          <img 
+              src="/Legis_icon.png" 
+              alt="Logo LegisBot" 
+              className="h-16 w-auto object-contain transition-transform duration-300 drop-shadow-[0_0_15px_rgba(168,85,247,0.6)] mb-4"
+          />
+
+          {/* 2. TÍTULO (Debajo del icono) */}
+          <h2 className="text-3xl font-bold text-white tracking-tight">
             Crear Cuenta
           </h2>
-          <p className="text-slate-400 text-sm mt-2">Únete a la plataforma LegisBot</p>
+          
+          {/* 3. LEYENDA ELIMINADA */}
         </div>
 
         {/* FORMULARIO */}
